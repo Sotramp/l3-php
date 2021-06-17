@@ -1,0 +1,22 @@
+{
+
+  "home" : {
+    "path" : "/",
+    "controller" : "App\\Controller\\HomeController@home"
+  },
+
+  "catalog" : {
+    "path" : "/catalog",
+    "controller" : "App\\Controller\\CatalogController@view"
+  },
+
+  "catalog_product" : {
+    "path" : "/catalog/product",
+    "controller" : "App\\Controller\\CatalogController@viewProduct"
+  },
+
+  "notFound": {
+    "controller": "App\\Controller\\NotFoundController@error404"
+  }
+
+}
