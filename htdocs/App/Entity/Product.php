@@ -5,9 +5,8 @@ namespace App\Entity;
 class Product implements EntityInterface
 {
 
-    private $name;
-    private $price;
-
+    public $name;
+    public $price;
 
     public function __construct($name, $price)
     {

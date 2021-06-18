@@ -15,6 +15,11 @@
     "controller" : "App\\Controller\\CatalogController@viewProduct"
   },
 
+  "customers" : {
+    "path" : "/customers",
+    "controller" : "App\\Controller\\CustomerController@view"
+  },
+
   "notFound": {
     "controller": "App\\Controller\\NotFoundController@error404"
   }

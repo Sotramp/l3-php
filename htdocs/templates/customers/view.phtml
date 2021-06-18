@@ -1,0 +1,25 @@
+<?php
+$customerList = $this->getData('customers');
+$customerID = $this->getData('customerID');
+$customerName = $this->getData('customerName');
+?>
+
+<?php include(BASE_DIR . '/templates/head.phtml') ?>
+
+    Ma view List Customers
+    <ul>
+
+        <?php foreach ($customerList as $customer) : ?>
+            <li><b><?= $customer->getFirstName() ?>  <?= $customer->getLastName() ?> - </b>  <?= $customer->getAddress() ?></li>
+        <?php endforeach; ?>
+    </ul>
+
+<?php if ($customerID != null) : ?>
+    <b><?= $customerID->getFirstName() ?>  <?= $customerID->getLastName() ?> - </b>  <?= $customerID->getAddress() ?><br>
+<?php endif; ?>
+
+<?php if ($customerName != null) : ?>
+    <b><?= $customerName->getFirstName() ?>  <?= $customerName->getLastName() ?> - </b>  <?= $customerName->getAddress() ?>
+<?php endif; ?>
+
+<?php include(BASE_DIR . '/templates/footer.phtml') ?>

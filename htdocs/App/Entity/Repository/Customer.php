@@ -3,9 +3,8 @@
 namespace App\Entity\Repository;
 
 use App\Entity\EntityInterface;
-use PDO;
 
-class Product extends AbstractRepository implements RepositoryInterface
+class Customer extends AbstractRepository implements RepositoryInterface
 {
 
     /**
@@ -13,14 +12,14 @@ class Product extends AbstractRepository implements RepositoryInterface
      */
     public function findAll()
     {
-        $products = [];
+        $customers = [];
 
-        foreach ($this->getConnexion()->query('SELECT * from products') as $row) {
-            $product = new \App\Entity\Product($row['name'], $row['price']);
-            array_push($products, $product);
+        foreach ($this->getConnexion()->query('SELECT * from customers') as $row) {
+            $customer = new \App\Entity\Customer($row['firstname'], $row['lastname'], $row['address']);
+            array_push($customers, $customer);
         }
 
-        return $products;
+        return $customers;
     }
 
     /**
@@ -29,13 +28,13 @@ class Product extends AbstractRepository implements RepositoryInterface
      */
     public function find($id)
     {
-        $request = $this->getConnexion()->prepare("SELECT * FROM products WHERE id = :id");
+        $request = $this->getConnexion()->prepare("SELECT * FROM customers WHERE id = :id");
         $request->bindParam(':id', $id);
         $request->execute();
         $result = $request->fetch();
 
         if ($result != null) {
-            return new \App\Entity\Product($result['name'], $result['price']);
+            return new \App\Entity\Customer($result['firstname'], $result['lastname'], $result['address']);
         }
 
         return null;
@@ -48,13 +47,13 @@ class Product extends AbstractRepository implements RepositoryInterface
      */
     public function findBy($column, $value)
     {
-        $sql = "SELECT * FROM products WHERE {$column} LIKE '{$value}'";
+        $sql = "SELECT * FROM customers WHERE {$column} LIKE '{$value}'";
         $request = $this->getConnexion()->prepare($sql);
         $request->execute();
         $result = $request->fetch();
 
         if ($result != null) {
-            return new \App\Entity\Product($result['name'], $result['price']);
+            return new \App\Entity\Customer($result['firstname'], $result['lastname'], $result['address']);
         }
 
         return null;

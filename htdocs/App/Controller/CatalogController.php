@@ -18,7 +18,12 @@ class CatalogController extends AbstractController
 
         $singleProductBis = $productRepo->findBy('name', 'Sweat');
 
-        echo $this->render('catalogue/view.phtml', ['products' => $list_product, 'singleProduct' => $singleProduct, 'singleProductBis' => $singleProductBis]);
+        echo $this->render('catalogue/view.phtml',
+            [
+                'products' => $list_product,
+                'singleProduct' => $singleProduct,
+                'singleProductBis' => $singleProductBis
+            ]);
     }
 
 }
