@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Nos clients
+{% endblock %}
+
+{% block body %}
+    <h1>Voici nos clients :</h1>
+
+    <ul>
+        {% for customer in listCustomers %}
+            <li><b>{{ customer.firstName }} {{ customer.lastName }}</b> - {{ customer.address }}</li>
+        {% endfor %}
+    </ul>
+
+    <p><b>Client avec l'ID 2 : </b><b>{{ customerID.firstName }} {{ customerID.lastName }}</b> - {{ customerID.address }}</p>
+{% endblock %}
