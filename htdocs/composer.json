@@ -1,0 +1,14 @@
+{
+    "name": "l3/web",
+    "description": "Project L3 Web Avancé",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Damien Clairet",
+            "email": "damien-clairet@live.fr"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.3"
+    }
+}

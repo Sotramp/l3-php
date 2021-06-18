@@ -20,6 +20,11 @@
     "controller" : "App\\Controller\\CustomerController@view"
   },
 
+  "todolist" : {
+    "path" : "/todolist",
+    "controller" : "App\\Controller\\ToDoController@view"
+  },
+
   "notFound": {
     "controller": "App\\Controller\\NotFoundController@error404"
   }
