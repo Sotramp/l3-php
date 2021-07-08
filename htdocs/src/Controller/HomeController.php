@@ -12,7 +12,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="index")
      */
-    public function index(TestRepository $testRepository)
+    public function index()
     {
         return $this->render('index.html.twig');
     }
