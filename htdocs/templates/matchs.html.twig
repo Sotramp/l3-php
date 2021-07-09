@@ -8,10 +8,10 @@
     <h1>Liste des matchs</h1>
 
     <ul style="display:grid; grid-template-columns: repeat(4, 1fr); grid-gap: 20px; padding-left: 0;">
-        {% for match in matchs %}
+        {% for i, match in matchs %}
             <li style="padding: 15px; list-style-type: none;">
                 <p>{{ match.teams.domicile }} - {{ match.teams.exterieur }}</p>
-                <p>{{ match.date|date("m/d/Y à H:i", "Europe/Paris") }}</p>
+                <p>{{ match.date|date("d/m/Y à H:i", "Europe/Paris") }}</p>
                 {% if match.scores is defined %}
                     {% if match.scores.winner is defined %}
                         <p>Terminé : {{ match.scores.domicile }} - {{ match.scores.exterieur }}</p>
@@ -20,6 +20,17 @@
                     {% endif %}
                 {% else %}
                     <p>Pas commencé</p>
+                {% endif %}
+
+                {% if match.scores is not defined %}
+                    <form method="POST" action="add_bet">
+                        <input type="hidden" value="{{ i }}" name="id_match">
+                        <label style="display: block;" for="bet_home">Score {{ match.teams.domicile }} :</label>
+                        <input type="number" name="bet_home">
+                        <label style="display: block;" for="bet_ext">Score {{ match.teams.exterieur }} :</label>
+                        <input type="number" name="bet_ext">
+                        <input style="display: block;" type="submit" value="Parier">
+                    </form>
                 {% endif %}
             </li>
         {% endfor %}

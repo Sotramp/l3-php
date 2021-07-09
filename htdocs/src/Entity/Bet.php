@@ -28,9 +28,14 @@ class Bet
     private $id_match;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
      */
-    private $bet;
+    private $bet_ext;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $bet_home;
 
     public function getId(): ?int
     {
@@ -61,14 +66,26 @@ class Bet
         return $this;
     }
 
-    public function getBet(): ?string
+    public function getBetExt(): ?int
     {
-        return $this->bet;
+        return $this->bet_ext;
     }
 
-    public function setBet(string $bet): self
+    public function setBetExt(int $bet_ext): self
     {
-        $this->bet = $bet;
+        $this->bet_ext = $bet_ext;
+
+        return $this;
+    }
+
+    public function getBetHome(): ?int
+    {
+        return $this->bet_home;
+    }
+
+    public function setBetHome(int $bet_home): self
+    {
+        $this->bet_home = $bet_home;
 
         return $this;
     }
