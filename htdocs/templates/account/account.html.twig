@@ -10,6 +10,7 @@
     <p>Informations du compte : </p>
     {{ app.user.email }}
 
+    <h1>Mes paris</h1>
     {% for bet in bets %}
         <ul>
             <li>
@@ -22,4 +23,10 @@
             </li>
         </ul>
     {% endfor %}
+
+    <h1>Mes points</h1>
+    J'ai actuellement {{ points }} points.
+
+    <h1>Mon classement</h1>
+    <p>Je suis <b>n° {{ classement }}</b> au classement avec <b>{{ points }} points</b>.</p>
 {% endblock %}

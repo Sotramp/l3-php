@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Classement
+{% endblock %}
+
+{% block body %}
+    <h1>Classement</h1>
+
+    {% for user in classement %}
+        <p><b>{{ user.email }}</b> : {{ user.points }} points</p>
+    {% endfor %}
+{% endblock %}

@@ -13,9 +13,8 @@ class MatchController extends AbstractController
     /**
      * @Route("/matchs", name="matchs")
      */
-    public function view(UserInterface $user)
+    public function view()
     {
-        $todolist = [];
         $matchs = $this->getMatchs();
         return $this->render('matchs.html.twig', ['matchs' => $matchs]);
     }

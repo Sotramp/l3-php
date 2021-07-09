@@ -22,7 +22,7 @@
                     <p>Pas commencé</p>
                 {% endif %}
 
-                {% if match.scores is not defined %}
+                {% if (match.scores is not defined) and (app.user) %}
                     <form method="POST" action="add_bet">
                         <input type="hidden" value="{{ i }}" name="id_match">
                         <label style="display: block;" for="bet_home">Score {{ match.teams.domicile }} :</label>
