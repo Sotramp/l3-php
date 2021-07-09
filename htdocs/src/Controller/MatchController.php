@@ -16,10 +16,7 @@ class MatchController extends AbstractController
     public function view(UserInterface $user)
     {
         $todolist = [];
-        $client = new Client();
-        $response = $client->request('GET', 'http://mathys-pomier.fr:4000/euro');
-        $body = $response->getBody();
-        $matchs = json_decode($body, true);
+        $matchs = $this->getMatchs();
         return $this->render('matchs.html.twig', ['matchs' => $matchs]);
     }
 
@@ -40,5 +37,13 @@ class MatchController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('matchs');
+    }
+
+    public static function getMatchs()
+    {
+        $client = new Client();
+        $response = $client->request('GET', 'http://mathys-pomier.fr:4000/euro');
+        $body = $response->getBody();
+        return json_decode($body, true);
     }
 }

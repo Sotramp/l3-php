@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Mon compte
+{% endblock %}
+
+{% block body %}
+    <h1>Mon compte</h1>
+
+    <p>Informations du compte : </p>
+    {{ app.user.email }}
+
+    {% for bet in bets %}
+        <ul>
+            <li>
+                {% for i, match in matchs %}
+                    {% if bet.getIdMatch() == i %}
+                        {{ match.teams.domicile }} - {{ match.teams.exterieur }}
+                    {% endif %}
+                {% endfor %}
+                {{ bet.getBetHome() }} - {{ bet.getBetExt() }}
+            </li>
+        </ul>
+    {% endfor %}
+{% endblock %}
