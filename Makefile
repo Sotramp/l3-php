@@ -1,5 +1,5 @@
 up: ## Launch all the container
-	docker-compose up
+	docker-compose up -d
 
 down: ## Stop all the container
 	docker-compose down
