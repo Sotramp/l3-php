@@ -5,32 +5,47 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Liste des matchs</h1>
+    <h1 class="text-3xl mt-10 text-center 2xl:focus-within:text-indigo-700 mb-10">Liste des matchs</h1>
 
-    <ul style="display:grid; grid-template-columns: repeat(4, 1fr); grid-gap: 20px; padding-left: 0;">
+    <ul class="mx-72">
         {% for i, match in matchs %}
-            <li style="padding: 15px; list-style-type: none;">
-                <p>{{ match.teams.domicile }} - {{ match.teams.exterieur }}</p>
-                <p>{{ match.date|date("d/m/Y à H:i", "Europe/Paris") }}</p>
+            <li class="bg-gray-100 rounded-xl m-auto mb-4 pb-4 text-xl">
                 {% if match.scores is defined %}
                     {% if match.scores.winner is defined %}
-                        <p>Terminé : {{ match.scores.domicile }} - {{ match.scores.exterieur }}</p>
+                        <div class="text-center bg-green-600 rounded-t-xl text-white">Terminé</div>
                     {% else %}
-                        <p>En cours : {{ match.scores.domicile }} - {{ match.scores.exterieur }}</p>
+                        <div class="text-center bg-gray-400 rounded-t-xl text-white">En cours</div>
                     {% endif %}
                 {% else %}
-                    <p>Pas commencé</p>
+                        <div class="text-center bg-blue-200 rounded-t-xl text-white">Prochainement</div>
                 {% endif %}
 
+                <div class="px-4 text-center">
+                    <p class="my-4">
+                        {{ match.teams.domicile }}
+                        {% if match.scores is defined %}
+                            <b>{{ match.scores.domicile }}</b> - <b>{{ match.scores.exterieur }}</b>
+                        {% else %}
+                            -
+                        {% endif %}
+                        {{ match.teams.exterieur }}
+                    </p>
+                    <p class="mt-4">Le {{ match.date|date("d/m/Y à H:i", "Europe/Paris") }}</p>
+                </div>
+
                 {% if (match.scores is not defined) and (app.user) %}
-                    <form method="POST" action="add_bet">
-                        <input type="hidden" value="{{ i }}" name="id_match">
-                        <label style="display: block;" for="bet_home">Score {{ match.teams.domicile }} :</label>
-                        <input type="number" name="bet_home">
-                        <label style="display: block;" for="bet_ext">Score {{ match.teams.exterieur }} :</label>
-                        <input type="number" name="bet_ext">
-                        <input style="display: block;" type="submit" value="Parier">
-                    </form>
+                    <hr class="my-4">
+
+                    <div class="flex justify-center">
+                        <form method="POST" action="add_bet">
+                            <input type="hidden" value="{{ i }}" name="id_match">
+                            <label style="display: block;" for="bet_home">Score {{ match.teams.domicile }} :</label>
+                            <input type="number" name="bet_home">
+                            <label style="display: block;" for="bet_ext">Score {{ match.teams.exterieur }} :</label>
+                            <input type="number" name="bet_ext">
+                            <input class="m-auto mt-2 px-4 bg-gray-300 rounded-xl" style="display: block;" type="submit" value="Parier">
+                        </form>
+                    </div>
                 {% endif %}
             </li>
         {% endfor %}

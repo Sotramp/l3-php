@@ -5,28 +5,26 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Mon compte</h1>
+    <h1 class="text-3xl mt-10 text-center 2xl:focus-within:text-indigo-700 mb-10">Mon compte</h1>
 
-    <p>Informations du compte : </p>
-    {{ app.user.email }}
+    <div class="bg-gray-200 mx-72 rounded-xl m-auto text-xl p-6">
+        <h1 class="font-medium">Informations du compte : </h1>
+        <p class="mb-4">{{ app.user.email }}</p>
 
-    <h1>Mes paris</h1>
-    {% for bet in bets %}
-        <ul>
-            <li>
-                {% for i, match in matchs %}
-                    {% if bet.getIdMatch() == i %}
-                        {{ match.teams.domicile }} - {{ match.teams.exterieur }}
-                    {% endif %}
-                {% endfor %}
-                {{ bet.getBetHome() }} - {{ bet.getBetExt() }}
-            </li>
-        </ul>
-    {% endfor %}
+        <h1 class="font-medium">Mon classement</h1>
+        <p class="mb-4">Je suis <b>n° {{ classement }}</b> au classement avec <b>{{ points }} points</b>.</p>
 
-    <h1>Mes points</h1>
-    J'ai actuellement {{ points }} points.
-
-    <h1>Mon classement</h1>
-    <p>Je suis <b>n° {{ classement }}</b> au classement avec <b>{{ points }} points</b>.</p>
+        <h1 class="font-medium">Mes paris</h1>
+        {% for bet in bets %}
+            <ul>
+                <li class="mb-2">
+                    {% for i, match in matchs %}
+                        {% if bet.getIdMatch() == i %}
+                            <p>{{ match.teams.domicile }} <b>{{ bet.getBetHome() }}</b> - <b>{{ bet.getBetExt() }}</b> {{ match.teams.exterieur }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </li>
+            </ul>
+        {% endfor %}
+    </div>
 {% endblock %}

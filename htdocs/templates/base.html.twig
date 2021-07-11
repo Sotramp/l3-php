@@ -13,14 +13,8 @@
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
     </head>
-    <body>
-        <ul style="display: grid; grid-template-columns: repeat(5, 1fr)">
-            <a href="/"><li>Accueil</li></a>
-            <a href="/matchs"><li>Matchs</li></a>
-            <a href="/classement"><li>Classement</li></a>
-            <a href="/contact"><li>Contact</li></a>
-            <a href="/compte"><li>Mon compte</li></a>
-        </ul>
+    <body class="container m-auto">
+        {% include 'header.html.twig' %}
 
         {% block body %}{% endblock %}
     </body>

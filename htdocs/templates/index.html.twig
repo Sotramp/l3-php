@@ -5,11 +5,15 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Bienvenue sur la page d'accueil</h1>
+    <h1 class="text-3xl mt-10 text-center 2xl:focus-within:text-indigo-700">Parions Foot spécial EURO 2021</h1>
 
-    {% if app.user %}
-        <div>
-            Vous êtes connecté en tant que {{ app.user.email }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
-        </div>
-    {% endif %}
+    <div class="mx-72">
+        <p class="text-xl mt-10">
+            Durant l'Euro 2021, challengez vous entre amis en pariant sur les prochains matchs. En cas de bons pronostics, vous remportez
+            des points et pourrez monter dans notre classement. Inscrivez-vous et rendez-vous sur la page Matchs pour voir les paris
+            disponibles !
+        </p>
+
+        <p class="text-xl mt-4 text-center">Retrouvez vos paris, points et votre position au classement sur votre profil.</p>
+    </div>
 {% endblock %}

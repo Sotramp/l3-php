@@ -1,3 +1,23 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+label {
+    @apply block font-medium text-xl;
+}
+
+label[for=registration_form_agreeTerms] {
+    @apply inline-block pr-4;
+}
+
+input {
+    @apply border px-4 py-2 mb-4;
+}
+
+button[type=submit] {
+    @apply block border px-4 py-2 bg-gray-200 text-xl mt-4;
+}
+
+textarea {
+    @apply w-full border;
+}

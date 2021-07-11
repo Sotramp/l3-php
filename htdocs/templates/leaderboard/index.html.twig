@@ -5,9 +5,18 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Classement</h1>
+    <h1 class="text-3xl mt-10 text-center 2xl:focus-within:text-indigo-700">Classement</h1>
 
-    {% for user in classement %}
-        <p><b>{{ user.email }}</b> : {{ user.points }} points</p>
-    {% endfor %}
+    <table class="mt-6 m-auto text-md border-black border">
+        <thead class="border border-black bg-gray-300">
+            <th class="p-4 border border-black">Utilisateur</th>
+            <th class="p-4 border border-black">Nombre de points</th>
+        </thead>
+        {% for user in classement %}
+            <tr>
+                <td class="p-4 border border-black"><b>{{ user.email }}</b></td>
+                <td class="p-4 border border-black">{{ user.points }} points</td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

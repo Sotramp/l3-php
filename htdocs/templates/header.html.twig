@@ -1,0 +1,18 @@
+<div class="relative rounded-b-2xl px-8 bg-green-600">
+    <ul class="flex">
+        <a class="px-4 py-6 text-xl hover:bg-green-700" href="/"><li>Accueil</li></a>
+        <a class="px-4 py-6 text-xl hover:bg-green-700" href="/matchs"><li>Matchs</li></a>
+        <a class="px-4 py-6 text-xl hover:bg-green-700" href="/classement"><li>Classement</li></a>
+        <a class="px-4 py-6 text-xl hover:bg-green-700" href="/contact"><li>Contact</li></a>
+    </ul>
+
+    <div class="absolute right-0 top-6 pr-6">
+        {% if app.user %}
+            <a class="inline bg-gray-200 rounded-xl p-2" href="/compte">{{ app.user.email }}</a>
+            <a class="inline bg-red-500 rounded-xl p-2" href="/logout">Déconnexion</a>
+        {% else %}
+            <a class="inline bg-green-300 rounded-xl p-2" href="/login">Connexion</a>
+            <a class="inline bg-green-500 rounded-xl p-2" href="/register">Inscription</a>
+        {% endif %}
+    </div>
+</div>
